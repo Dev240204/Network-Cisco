@@ -1,0 +1,37 @@
+2 VLAN
+commands 
+exit
+config t
+int fa0/0.1
+encapsulation dot1q 20
+ip address 192.168.20.1 255.255.255.0
+exit
+
+5 static 
+WIC-2T to be inserted in router 1841
+
+6 ospf
+exit 
+router ospf 1
+network 192.168.1.0 0.0.0.255 area 0
+network 10.0.0.0 0.255.255.255 area 0
+exit
+
+9 dhcp
+router 1
+conf t
+int fa0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+do write memory
+ip dhcp pool net1
+network 192.168.1.1 255.255.255.0
+
+router 2
+conf t
+int fa0/1
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+do write memory
+ip dhcp pool net2
+network 192.168.2.1 255.255.255.0

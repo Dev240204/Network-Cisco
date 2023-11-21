@@ -1,4 +1,9 @@
 2 VLAN
+router 1841
+first set all the pc ip and configure the router accordingly as for normal connection
+in switch add vlan database add a number and name
+in fa0/5 set to trunk and in the vlan pcs set vlan to the assigned number
+add vlan database same as switch to router and then execute following command
 commands 
 exit
 config t
@@ -7,10 +12,25 @@ encapsulation dot1q 20
 ip address 192.168.20.1 255.255.255.0
 exit
 
+3 RIp
+Router-pT
+switch-pt
+first set all computer and switch and router network and set the ips in router(fast ethernet port) and pc accordingly
+then set a ip between two router as 10.0.0.0 and set clock rate in serial 2/0
+now add both the network in rip one of pc and other one between two router and the save in settings 
+
 5 static 
+first set all computer and switch and router network and set the ips in router(fast ethernet port) and pc accordingly
+now set serial port between two routers accordingly of type 10.0.0.0
+now in static section add the network ip of the other branch like 192.168.2.1 and the serial port of the other router as next hop as 10.0.0.3
+do the same for all the available router network
 WIC-2T to be inserted in router 1841
 
 6 ospf
+first set all computer and switch and router network and set the ips in router(fast ethernet port) and pc accordingly
+now set serial port between two routers accordingly of type 10.0.0.0
+now write the command given below in the each router 
+we have to write command for all the assigned ips 
 exit 
 router ospf 1
 network 192.168.1.0 0.0.0.255 area 0
@@ -18,6 +38,9 @@ network 10.0.0.0 0.255.255.255 area 0
 exit
 
 9 dhcp
+connect all the switchs and router accordingly don't set ip address in pc's
+now set the fast ethernet port in router according to the network
+now excute the dhcp command given below to start the dhcp network
 router 1
 conf t
 int fa0/0
@@ -35,3 +58,9 @@ no shutdown
 do write memory
 ip dhcp pool net2
 network 192.168.2.1 255.255.255.0
+
+10 smtp 
+first set all computer and switch and router network and set the ips in router(fast ethernet port) and pc accordingly
+now connect server and the router and set the port numbers in fast ethernet section of both of them
+now in server set a domain and and add a user in it
+now in pc's set the user and its pswd in the email service section of the pc and do this for both the pc's

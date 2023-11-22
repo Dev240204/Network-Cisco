@@ -27,6 +27,7 @@ def encrypt(plaintext, key_matrix):
 def decrypt(ciphertext, key_matrix):
     key_size = len(key_matrix)
     plaintext = ""
+    ciphertext = ciphertext.replace(" ", "").upper()
 
     for i in range(0, len(ciphertext), key_size):
         block = ciphertext[i:i + key_size]
